@@ -1,0 +1,562 @@
+/* ctc-vac.css [12.0] - 2016-08-18 */
+
+#barRight {
+	float: right;
+	height: 30px;
+}
+
+.break {
+	margin: 0 0 17px 0;
+	padding: 17px 10px 0;
+	position: relative;
+}
+
+#ctc a.arrow {
+	color: #fff;
+	display: block;
+	font-size: 110%;
+	text-decoration: none;
+}
+
+#ctc a.arrow:hover {
+	color: #ccc;
+}
+
+#ctc a.whiteLink {	
+	color: #069;
+	display: block;
+	font-size: 110%;
+	text-decoration: none;
+}
+
+#ctc a.whiteLink:hover {
+	color: #000;
+}
+
+a.expandableLink {
+	color: #0000aa;
+	text-decoration: underline;
+}
+
+a.check {
+	background: url(../images/ctc-vac/check.gif) no-repeat;
+	height: 34px;
+	position: absolute;
+	width: 34px;
+}
+
+.apply {
+	height: 33px;
+	margin-bottom: -6px;
+}
+
+.whiteBody {
+	padding: 0;
+	position: relative;
+}
+
+#topImage {
+	height: 168px;
+	overflow: hidden;
+	position: relative;
+	width: 760px;
+}
+
+#topImage h1,
+#topImageSplash h1 {
+	background: none;
+	display: inline;
+	left: -1200px;
+	position: absolute;
+	top: -40px;
+}
+
+#topImage p {
+	color: #fff;
+	left: 42px;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	top: 81px;
+	width: 412px;
+}
+
+/* RS eng */
+.image5-eng {
+	background: url(../images/ctc-vac/RS_E.jpg) top left no-repeat;
+}
+
+/* RS fra */
+.image5-fra {
+	background: url(../images/ctc-vac/RS_F.jpg) top left no-repeat;
+}
+
+#footer {
+	border-radius: 0;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+#disclaimer {
+	background-color: #1861a4;
+	color: #fff;
+	font-size: 14px;
+	line-height: 1.65em;
+	min-height: 70px;  /* IE fix */
+	padding: 25px 45px 25px 45px;
+}
+
+/* h3 and h4 added for EAPP */
+/*#ctc h2,
+#ctc h3,
+#ctc h4 {
+	color: #036;
+	font-size: 115%;
+	font-weight: bold;
+}
+
+#ctc h3 {
+	color: #036;
+	font-size: 110%;
+	font-weight: bold;
+}
+
+#ctc h4 {
+	color: #036;
+	font-size: 100%;
+}
+
+#ctc h4.top5 {
+	margin-top: 5px;
+}
+
+#ctc h4.question {
+	margin-bottom: 3px;
+}
+
+#ctc h4.program {
+	margin: 0 0 5px 0;
+}
+
+#ctc form {
+	margin: 0;
+	padding: 0;
+}*/
+
+.faqButton {
+	margin-top: -2px;
+}
+
+div.defaultHide {
+	display: none;
+}
+
+.check {
+	margin-top: -7px;
+	margin-left: -30px;
+	margin-bottom: -5px;
+	margin-right: 5px;
+}
+
+.step {
+	font-weight: bold;
+	float: left; 
+	padding-left: 30px;
+	position: relative;
+}
+
+.results {
+	margin-left: 100px;	
+	width: 400px;
+}
+
+#ctc a.btn-back {
+    background: transparent url("../images/ctc-vac/back.jpg") no-repeat scroll top left #18336a;
+    border-style: none;
+	color: #fff;
+    float: left;
+    font-size: 120%;
+    height: 37px;
+	outline-color: #fff;
+	padding: 10px 0 0 5px;
+    text-align: center;
+	text-decoration: none;
+    width: 129px;
+}
+
+#ctc a:hover.btn-back {
+	color: #ccc;
+}
+
+#ctc input.btn-back {
+    background: transparent url("../images/ctc-vac/back.jpg") no-repeat scroll top left #18336a;
+    border-style: none;
+	color: #fff;
+    float: left;
+    font-size: 120%;
+    height: 37px;
+    padding: 0 0 0 20px;
+    text-decoration: none;
+    width: 129px;
+}
+
+#ctc .btn-back:hover, #ctc .btn-next:hover, #ctc .btn-next-l:hover {
+    color: #ccc;
+	cursor: pointer;
+    text-decoration: none;
+}
+
+/*#ctc .row {
+	display: block;
+	margin: 0;
+	padding: 0 0 7px 0;
+	width: 98.5%;
+}*/
+
+#ctc .col2 {
+    float: left;
+    margin: 0 10px 3px 0;
+    padding: 0;
+    width: 46%;
+}
+
+.prog-bar {
+	margin: 0;
+	padding: 0;
+}
+
+div.width49 {
+	margin: 0;
+	padding: 0;
+	width: 49%;
+}
+
+div.width99 {
+	margin: 0;
+	padding: 0;
+	width: 99%;
+}
+
+/* Documents to submit checklist */
+#eapp-documents-to-submit {
+	float: left;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+#ctc .doc-checklist-header {
+	background-color: #4f81bc;
+	color: #fff;
+	margin: 5px 0;
+	padding: 5px 10px;
+}
+
+#ctc .doc-checklist {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#ctc .doc-checklist span {
+	line-height: 23px;
+}
+
+#ctc .doc-missing {
+	background-position: left center;
+	background-repeat: no-repeat;
+	margin-bottom: 2px;
+	min-height: 28px;
+	padding: 1px 10px 1px 30px;
+}
+
+#ctc .doc-submitted {
+	background-image: url('../images/ctc-vac/checkmark.gif');
+	background-position: left center;
+	background-repeat: no-repeat;
+	margin-bottom: 2px;
+	min-height: 28px;
+	padding: 1px 10px 1px 30px;
+}
+
+#ctc .doc-checklist-links {
+	float: right;
+}
+
+#ctc .doc-checklist form {
+	float: left;
+	height: 28px;
+}
+
+#ctc doc-submitted p,
+#ctc doc-missing p {
+	margin: 0;
+	padding: 0;
+}
+
+.odd {
+	background-color: #d1d7e7;
+}
+
+.even {
+	background-color: #e9edf6;
+}
+
+.small-text {
+	font-size: 0.8em;
+}
+
+/* Form elements */
+
+input[type="submit"].previous,
+input[type="button"].previous {
+	background: url('../images/eapp-arrow-left.png') no-repeat left center #eaebed;
+	background-size: contain;
+	border-radius: 20px;
+	border-style: solid;
+	border-width: 1px;
+    border-color: #dcdee1;
+	color: #335075;
+	cursor: pointer;
+	padding: 8px 35px 8px 50px;
+}
+
+input[type="submit"].top-nav-input {
+	background: url(../images/ctc-vac/start-debut.jpg) transparent right 3px no-repeat; 
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	display: inline; 
+	font-size: 102%;
+	height: 31px;
+	margin: -3px 0 0 0; 
+	padding: 0 45px 0 0; 
+	text-align: left;
+}
+
+input[type="submit"].top-nav-input:hover {
+	color: #ccc;
+}
+
+input[type="button"].back {
+	background: url('../images/eapp-arrow-left.png') no-repeat left center #eaebed;
+	background-size: contain;
+	border-radius: 20px;
+	border-style: solid;
+	border-width: 1px;
+    border-color: #dcdee1;
+	color: #335075;
+	cursor: pointer;
+	padding: 8px 35px 8px 50px;
+}
+
+/* Styles for old question help tips and glossary help tips */
+
+span.helpTip,
+#glossaryhelptip {
+	background-color: #003381;
+	border: 1px outset rgb(0, 51, 129);
+	border-radius: 8px;
+	color: white;
+	cursor: help;
+	display: none;
+	font-weight: normal;
+	padding: 15px 15px 5px 15px;
+	z-index: 1000;
+}
+
+span.helpTip {
+	position: relative;
+	right: 5px;
+	width: 85%;
+}
+
+#glossaryhelptip {
+	position: absolute;
+	vertical-align: top;
+}
+
+.helpTip p:first-child,
+#glossaryhelptip p:first-child {
+	display: inline;  /* Display inline, to allow space for close button */
+}
+
+.myQuestion,
+.table-description,
+.question-description {
+	color: #333;
+	font-weight: 700;
+}
+
+.question-label a img,
+.question-description a img {
+	vertical-align: top;
+}
+
+div.phoneForms { display:block; float:left; }
+/*
+label .phoneLabels { float:left; display:block; }
+input .phoneInputs { float:left; display:block; }
+*/
+.checkboxlabel, .acceptLabelError, label.checkbox-label, label.acceptLabelError, label.errorLabel { display: inline; }
+
+.acceptLabel {
+	background-color: transparent;
+	display: inline; 
+	font-weight: bold;
+}
+
+
+/* 
+  Required Documents Checklist - Personal Information Notice 
+  IE < 8  Provides limited options for styling disabled select controls
+  The rules below style paragraph items to look like a select control whith the I agree text selected
+*/
+
+#ctc h3.i-agree-label {
+	border: none;
+	color: #003366 !important;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	font-weight: bold;
+	margin: 0 0 5px 0;
+}
+
+.i-agree-text-wrap {
+	background-color: #f0f0f0;
+    border-color: #c8c8c8;
+	border-radius: 4px;
+    border-style: solid;
+    border-width: 1px;
+    margin: 0 0 10px 0;
+    min-height: 18px !important;
+    padding: 4px 4px 20px 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+}
+
+.i-agree-text-wrap.selected {
+    background-color: #fff;
+}
+
+.i-agree-text {
+    background-color: #f0f0f0;
+    color: #666;
+    margin: 0;
+    padding: 0 4px;
+}
+
+.i-agree-text-wrap.selected .i-agree-text { 
+   background-color: #3399ff;
+   color: #fff;
+}
+
+select { width: 100%; }
+div.width32 select { width:32%; float:left; margin-right:1.31%; }  /* Placement of dd/mm/yy dropdowns on question.jsp */
+
+.myHelpBlock {
+	background-color: #f6f6fd;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	margin-bottom: 5px;
+	margin-top: 10px;
+	padding: 5px 5px 1px;
+}
+
+.helpClose {
+	background-color: transparent;
+	float: left;
+	padding: 5px 5px 2px 0;
+	width: 30px;
+}
+
+.helpText {
+    background-color: transparent;
+    padding: 5px;
+}
+
+div.helpButtonBox {
+    background-color: transparent;
+    padding: 5px;
+}
+
+div.col8Area { float:right; } /* This modification is to make help buttons float right. May not be best/final solution. */
+
+.myQuestion { position:static; } /* Added to stop text from invisibly layering over help button on fileupload page, rendering help button unclickable */
+
+.indentedControl {
+	display: inline-block;
+	margin-left: 25px;
+	text-indent: -25px;
+}
+
+.displayBlock {
+	display: block;
+}
+
+.indent-text {
+	display: block;
+	margin-top:-1.75em;
+}
+
+.indentedControl .indent-text {
+	text-indent: 0;
+}
+
+textarea {
+	max-width: 628px;
+}
+
+/* End Amended styles from eapplication.css */
+
+/* Modified a tag behaviour to patch randomly-appearing a tags on several pages */
+a:hover, a:active, a:focus { text-decoration:none; }
+a[href]:hover, a[href]:active, a[href]:focus { text-decoration:underline; }
+
+
+@media screen and (max-width:767px),screen and (max-device-width:767px){
+  #ctc input .exit, #ctc input .next, #ctc input .previous  {width:100%;}
+}
+
+.nextButton {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+	color: #fff;
+	cursor: pointer;
+    height: 2.8em;
+    vertical-align: middle;
+    width: 17em;
+}
+
+.nextButtonText {
+	background-color: transparent;
+	background-repeat: no-repeat;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	height: 2.6em;
+	vertical-align: middle;
+	width: 14.5em;
+}
+
+.exitButton {
+	background-color: transparent;
+	background-repeat: no-repeat;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	height: 2.8em;
+	width: 9em;
+	vertical-align: middle;
+}
+
+.exitButtonText {
+	background-color: transparent;
+	background-repeat: no-repeat;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	height: 2.6em;
+	vertical-align: middle;
+	width: 8em;
+}

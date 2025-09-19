@@ -1,0 +1,362 @@
+/* eapplication.css - 2014-08-18 */
+
+.answer {
+	vertical-align: top;
+	PADDING-LEFT: 5px;
+	FONT-SIZE: 8pt;
+	position: relative;
+}
+
+.helpText {
+	padding: 5px;
+	background-color: #ffffcc;
+}
+
+div.helpButtonBox {
+	padding: 5px;
+	background-color: #ffffcc;
+}
+
+.helpClose {
+	padding: 5px 5px 2px 0px; /* top right bottom left */
+	background-color: #ffffcc;
+	width: 30px;
+	float: left;
+}
+
+.locatorSectionSelected {
+	FONT-WEIGHT: bold;
+	PADDING-RIGHT: 5px;
+	PADDING-LEFT: 5px;
+	PADDING-BOTTOM: 1px;
+	PADDING-TOP: 5px;
+	BACKGROUND-COLOR: #eff5fb;
+	border: 1px solid;
+}
+
+.locatorDocsList {
+	PADDING-TOP: 0px;
+	PADDING-LEFT: 10px;
+	FONT-SIZE: 8pt;
+}
+
+.devCommentText {
+	FONT-SIZE: 8pt;
+	PADDING-RIGHT: 5px;
+	PADDING-LEFT: 5px;
+	PADDING-BOTTOM: 5px;
+	PADDING-TOP: 5px;
+	COLOR: #000000;
+	BACKGROUND-COLOR: #FFFFCC;
+	border: 1px dashed purple;
+}
+
+.signature {
+	FONT-SIZE: 8pt;
+	PADDING-RIGHT: 5px;
+	PADDING-LEFT: 5px;
+	PADDING-BOTTOM: 5px;
+	PADDING-TOP: 5px;
+	COLOR: #000000;
+	/*BACKGROUND-COLOR: 	#ffff80;*/
+	border: 1px solid red;
+}
+
+div.col70Area {
+/* Removed for CTC look 
+	float: left;
+	width: 66%; 
+	margin: 0 10px 10px 0;*/
+	padding: 0;
+	/*overflow is used for those long drop down list for schools*/
+	overflow: hidden;
+}
+
+div.col28Area {
+/* Removed for CTC look 
+	float: left;*/
+	width: 26%; /* width changed from 28% to 26% for CTC look */
+	margin: 0 3px 0 0;
+	padding: 0;
+}
+
+div.col24Area {
+	float: left;
+	width: 24%;
+	margin: 0 0 0 0;
+	padding: 0 0 0 3px;
+}
+
+div.col24AreaHeaderStyle {
+	background-color: #224488;
+	color: #FFFFFF;
+	height: 100%;
+}
+
+div.whiteRightBorder {
+	border-right: 1px solid #ffffff;
+}
+
+div.col90Area {
+	/*float: left;*/
+	/*width: 90%;*/
+	margin: 0 3px 0 0;
+	padding: 0;
+}
+
+div.col100Area {
+	float: left;
+	width: 100%;
+	margin: 0 0 0 0;
+	padding: 0;
+}
+
+div.colComplexArea {
+	float: left;
+	margin: 3px 0 0 0;
+	padding: 0 0 0 3px;
+}
+
+div.col98Area {
+	/* removed for C2C styling
+	float: left;
+	width: 98%;
+	margin: 0 3px 0 0;
+	padding: 0;
+	padding-left: 3px;
+	margin-top: 3px;*/
+}
+
+div.col8Area {
+	float: left;
+	width: 9.2%;
+	margin: 0 0 0 0;
+	padding: 0;
+}
+
+div.col50Area {
+	/*float: left;*/
+	/*width: 48%;
+	margin: 10px 3px 10px 0;*/
+	margin:0;
+	padding: 0;
+}
+
+div.col60Area {
+	float: left;
+	width: 60%;
+	margin: 0 3px 0 0;
+	padding: 0;
+}
+
+div.col80Area {
+	float: left;
+	width: 80%;
+	margin: 0 3px 0 0;
+	padding: 0;
+}
+
+div.col19Area {
+	float: left;
+	width: 19.2%;
+	margin: 0 0 0 0;
+	padding: 0;
+}
+
+div.col50ActualArea {
+	float: left;
+	width: 48%;
+	margin: 10px 3px 10px 0;
+	padding: 0;
+}
+
+div.col50AreaGrouping {
+	float: left;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+div.alignRight {
+	text-align: right;
+}
+
+.myLocatorSectionSelected {
+	font-weight: bold;
+	border: 1px solid #CCCCCC;
+	background-color: #EFF5FB;
+	padding: 2px 2px 2px 2px;
+}
+
+/*NOTE : This one gets changed in another css if it's IE*/
+hr {
+	margin: 10px 0 10px 0;
+}
+
+hr.removeBtn {
+	width: 90%;
+	text-align: center;
+	margin-top: 10px;
+}
+
+div.leftPadding40 {
+	padding-left: 40px;
+}
+
+div.summary_answer_padding {
+	padding-top: 5px;
+	/*padding: 5px 5px 5px 5px;*/
+}
+
+div.paddingTopBottom10 {
+	padding: 10px 0 10px 0;
+}
+
+div.paddingTop10 {
+	padding-top: 10px;
+}
+
+div.paddingBottom10 {
+	padding-bottom: 10px;
+}
+
+/*NOTE : This one gets changed in another css if it's IE*/
+div.paddingComplexB5 { /*padding-bottom: 5px;*/
+	
+}
+
+td.width25 {
+	width: 25%;
+}
+
+td.width20 {
+	width: 20%;
+}
+
+td.width30,th.width30 {
+	width: 30%;
+}
+
+td.width40,th.width40 {
+	width: 40%;
+}
+td.width10,th.width10 {
+	width: 10%;
+}
+td.width15,th.width15 {
+	width: 15%;
+}
+td.width100 {
+	width: 100%;
+}
+
+ul.noIndentBullet {
+	list-style-type: disc;
+	margin-left: 15px;
+}
+
+p.closeDivPadding {
+	margin: 0;
+	padding: 0;
+	clear: both;
+}
+
+hr.famDivider {
+	width: 90%
+}
+
+div.noPadMar {
+	padding: 0;
+	margin: 0;
+}
+
+/*This is empty, but is not for IE*/
+p.noPadMar {
+	
+}
+
+div.removeBtn {
+	float: left;
+	margin: 10px 3px 10px 0;
+	padding: 0;
+	clear: both;
+}
+/*
+div.answerStyle {
+	font-size: 8pt;
+	border: 1px solid #CCCCCC;
+	margin: 0px 0px 0px 3px;
+	padding: 4px 5px 4px 5px;
+	background-color: #EFFBEF;
+	overflow: hidden;
+}*/
+
+/*START : This is for the FAQ page*/
+body.faqBodyStyles {
+	background-color: #FFFFFF;
+	color: #000000;
+	text-align: left;
+}
+
+body.faqBodyStyles a:link {
+	color: #3366cc;
+}
+
+body.faqBodyStyles a:visited {
+	color: #330033;
+}
+/*END : This is for the FAQ page*/ /* CLF-2 complience tags END */
+
+a.newWindow
+{
+position:relative;
+z-index:24;
+
+color:#000;
+text-decoration:none
+}
+a.newWindow:hover, a.newWindow:focus, a.newWindow:active
+{
+z-index:25;
+
+}
+a.newWindow span
+{
+position: absolute;
+left: -9000px;
+width: 0;
+overflow: hidden;
+}
+a.newWindow:hover span, a.newWindow:focus span, a.newWindow:active span 
+{
+display:block;
+position:absolute;
+top:1em; left:6em; width:12em;
+border:1px solid #0cf;
+background-color:#224488;
+color:#fff;
+text-align: center
+}
+
+div.displayPrice {
+	text-align: right;
+	padding-right:30px;
+}
+
+.hidden {
+	position:absolute;
+	left:-10000px;
+	top:auto;
+	width:1px;
+	height:1px;
+	overflow:hidden;
+}
+
+.hiddenLineSpace {
+	left:-10000px;
+	margin-bottom:10px;
+	height:1px;
+}
+.progressbarContent {
+	margin-left:-11px;
+}

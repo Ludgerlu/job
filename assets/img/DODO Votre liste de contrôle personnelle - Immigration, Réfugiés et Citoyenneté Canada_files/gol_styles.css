@@ -1,0 +1,419 @@
+/*******************************************************************************
+
+  Government On-Line
+  (C) 2006 Citizenship and Immigration Canada
+ 
+  Created: May 15, 2006 (Jack Pelletier)
+  
+  This gol_styles.css has the GOL overrides and GOL specific tags to the CIC 
+  style sheets. This style sheet is complemented by CIC's main site hosted 
+  remotely using Telus hosting
+            
+  We have 3 style sheets. 2 downloaded from CIC/Telus site, and 1 we create
+    -mainsite.css       (http://www.cic.gc.ca/styles/mainsite.css)
+    -mainsite-sizes.css (http://www.cic.gc.ca/styles/mainsite-sizes.css)
+    -gol_styles         (created by GOL-corporate systems)
+    
+  We place them in our <apache install>/htdocs/gol_static/styles/ folder.
+
+*******************************************************************************/
+
+/*******************************************************************************
+  Generic Styles (used in all applications)
+*******************************************************************************/
+/* No longer required with WET
+p, dd, dl, dt, li, form, input, button, textarea, option, fieldset, label  
+{
+  font-size         : 10pt;
+  font-family       : Verdana, helvetica, univers, sans-serif;
+}
+*/
+
+/* need for eFee popup*/
+.whitebody
+{
+	background-color  : #FFFFFF;
+	color			  :	#000000;
+	font-size         : 10pt;
+  	font-family       : Verdana, helvetica, univers, sans-serif;
+	text-align        : left;
+}
+
+.pubtitle 
+{ 
+  font-size: 16pt;
+  color: #224488;
+}
+
+.size-small       { font-size:  85%; }
+
+select 
+{
+	/* changed font to resizable from 9pt to 0.750em*/
+  font-size         : 0.750em;
+  /*font-size         : 9pt;*/
+  font-family       : Verdana, helvetica, univers, sans-serif; 
+}
+
+.formTitle 
+{
+  border-bottom     : 1px solid #0066cc;
+  color             : #000099;
+  font-weight       : bold;
+  text-align        : justify;
+  font-size         : 10pt;
+  font-family       : Verdana, helvetica, univers, sans-serif; 
+}
+
+.greyTitleBox 
+{
+  background-color  : #CCCCCC;
+  color             : #000099;
+  font-weight       : bold;
+  text-align        : justify;
+  font-size         : 10pt;
+  font-family       : Verdana, helvetica, univers, sans-serif;
+  padding           : 5px;
+  width             : 100%;
+}
+
+.formNotes 
+{
+  background-color  : #eff5fb;
+  border-bottom     : 1px solid #000099;
+  border-top        : 1px solid #000099;
+  border-left       : 1px solid #000099;
+  border-right      : 1px solid #000099;
+  padding-left      : 10px;
+  text-align        : justify;
+}
+
+.formNotes td
+{
+  padding           : 5px;
+  font-size         : 10pt;
+  font-family       : Verdana, helvetica, univers, sans-serif; 
+}
+
+.formHeader 
+{
+  background-color  : #224488;
+  border-top        : 1px solid #000099;
+  border-left       : 1px solid #000099;
+  border-right      : 1px solid #000099;
+  font-weight       : bold;
+  padding           : 10px;
+  font-size         : 10pt;
+  font-family       : Verdana, helvetica, univers, sans-serif;
+  color				: #FFF;
+  text-align		: center;
+}
+
+.formHeaderLeft 
+{
+  background-color  : #224488;
+  border-top        : 1px solid #000099;
+  border-left       : 1px solid #000099;
+  border-right      : 1px solid #000099;
+  font-weight       : bold;
+  padding           : 10px;
+  font-size         : 10pt;
+  font-family       : Verdana, helvetica, univers, sans-serif;
+  color				: #FFF;
+  text-align		: left;
+}
+
+.formBody
+{
+  background-color  : #eff5fb;
+  border-top        : 1px solid #000099;
+  border-bottom     : 1px solid #000099;
+  border-left       : 1px solid #000099;
+  border-right      : 1px solid #000099;
+  margin-left       : auto;
+  margin-right      : auto;
+  padding           : 10px;
+  font-size         : 10pt;
+  font-family       : Verdana, helvetica, univers, sans-serif; 
+}
+
+.formFooter
+{
+	font-size:		80%;
+	text-align:		justify;
+}
+
+.maintenanceMsg
+{
+  font-weight       : bold;
+  font-size         : 10pt;
+  font-family       : Verdana, helvetica, univers, sans-serif;
+  color             : red;
+  margin-top		: 10px;
+  margin-bottom		: 10px;
+}
+
+.label-mandatory 
+{
+  font-weight       : bold;
+}
+
+.label-optional
+{
+  font-weight       : bold;
+}
+
+.star-mandatory 
+{
+  font-size         : 12pt;
+  color             : red;
+  font-family       : Verdana, helvetica, sans-serif;
+  text-align        : left;
+}
+
+.star-optional 
+{
+  font-weight       : bold;
+  font-size         : 10pt;
+}
+
+/*******************************************************************************
+  ECAS Specific Styles
+*******************************************************************************/
+.formNotesImportant
+{
+  background-color  : #ffffcc;
+  padding-left      : 10px;
+  text-align        : justify;
+}
+
+.formNotesImportant td
+{
+  padding           : 5px;
+  font-size         : 10pt;
+  font-family       : Verdana, helvetica, univers, sans-serif; 
+}
+
+/*******************************************************************************
+  Residence Calculator Styles
+*******************************************************************************/
+.addEntryFormHeader 
+{
+  background-color  : #224488;
+  border-bottom     : 1px solid #000099;
+  border-top        : 1px solid #000099;
+  border-left       : 1px solid #000099;
+  border-right      : 1px solid #000099;
+  border-spacing    : 1pt;
+  padding           : 3px;
+  width             : 100%;
+  font-weight       : bold;
+  color             : #FFF;
+}
+
+.subForm
+{
+  background-color  : #f0f0f0;
+  border-right      : 1px solid #000099;
+  border-left       : 1px solid #000099;
+  border-bottom     : 1px solid #000099;
+  border-collapse   : collapse;
+  padding           : 0px;
+  width             : 100%;
+}
+
+.subForm th
+{
+  border-right      : 1px solid #ffffff;
+  border-left       : 1px solid #ffffff;
+  border-bottom     : 1px solid #ffffff;
+  padding           : 5px;
+}
+
+.subForm td
+{
+  border            : 1px solid #ffffff;
+  padding           : 5px;
+}
+
+.addEntryForm
+{
+  background-color  : #eff5fb;
+  border-top        : 1px solid #000099;
+  border-right      : 1px solid #000099;
+  border-left       : 1px solid #000099;
+  border-bottom     : 1px solid #000099;
+  border-spacing    : 1pt;
+  padding           : 3px;
+  width             : 100%;
+}
+
+.listForm
+{
+  background-color  : #ccddee;
+  border-top        : 1px solid #000099;
+  border-right      : 1px solid #000099;
+  border-left       : 1px solid #000099;
+  border-bottom     : 1px solid #000099;
+  border-collapse   : collapse;
+  padding           : 3px;
+  width             : 100%;
+}
+
+.listForm th
+{
+  border-right      : 1px solid #ffffff;
+  border-left       : 1px solid #ffffff;
+  border-bottom     : 1px solid #ffffff;
+  padding           : 5px;
+}
+
+.listForm td
+{
+  border            : 1px solid #ffffff;
+  padding           : 5px;
+  background-color  : #DAE8F6;
+}
+
+.trBgColor0
+{
+  background-color  : #eff5fb;
+}
+
+.trBgColor1
+{
+  background-color  : #DAE8F6;
+}
+
+.mandatoryNote 
+{
+  font-size         : 8pt;
+  text-align        : right;
+}
+
+.helpMainHdr 
+{
+  text-align        : center;
+  color             : #000099;
+  font-weight       : bold;
+  font-size         : 18px; 
+  font-family       : verdana, arial, helvetica,sans-serif;
+}
+
+.helpSectionHdr 
+{
+  background-color  : #eaeaf4;
+  border-bottom     : 1px solid #000099;
+  border-top        : 1px solid #000099;
+  border-left       : 1px solid #000099;
+  border-right      : 1px solid #000099;
+  font-family       : verdana, arial, helvetica, sans-serif;
+  font-size         : 11px;
+  font-weight       : bold;
+  padding           : 5px;
+  width             : 515px;
+  text-align        : center;
+}
+
+.helpMainTbl
+{
+  width     :515px;
+}
+
+a.header:link { font-size : 10pt; }
+a.header:visited { font-size : 10pt; }
+a.header:active { font-size : 10pt;}
+a.header:hover { font-size : 10pt; }
+
+a.link-complete:link { color: #009933; }
+a.link-complete:visited { color: #009933; }
+a.link-complete:active { color: #009933; }
+a.link-complete:hover { color: #009933; }
+ 
+a.link-incomplete:link { color: red; }
+a.link-incomplete:visited { color: red; }
+a.link-incomplete:active { color: red; }
+a.link-incomplete:hover { color: red; }
+
+.quick-link { font-size: 10pt; }
+
+/*******************************************************************************
+  EFEE - EPAY - KMS Styles
+*******************************************************************************/
+.purpose {
+	width:				430px;
+	margin-bottom:		10px;
+}
+
+.disclaimer {
+	width:				430px;
+	margin-bottom:		10px;
+}
+
+div.contentFooter {
+	width:				100%;
+	margin-top:			10px;
+	margin-bottom:		10px;
+	font-size:			70%;
+}
+
+.formButtons {
+	text-align:			center;
+}
+
+.formButtons .formLink {
+	padding-left:		5px;
+	padding-right:		5px;
+}
+
+.businessDisplayBlock {
+	margin-top:			0in;
+	margin-bottom:		0.25in;	
+}
+
+tr.highLightLob, tr.highLightCategory, tr.highLightCategoryTop {
+	font-weight:		bold;
+}
+
+tr.highLightLob {
+	background-color:	darkgray;
+	color:				#FFFFFF;	
+}
+
+tr.highLightCategory, tr.highLightCategoryTop {
+	font-style:			italic ;
+}
+
+tr.highLightCategoryTop {
+	color:				white;
+	background-color:	#A7C4E2;
+}
+
+.highLightRow {
+	font-weight:		bold;
+}
+
+
+.buttonCell {
+	padding:			5px 0 5px 0;
+	text-align:			center;
+	vertical-align:		middle;
+}
+
+.buttonCell form {
+	margin:				0px;
+	padding:			0px;
+	width:				auto;
+	height:				auto;
+}
+.buttonCell input {
+	margin:				5px;
+}
+
+.rightAlign {
+	text-align:			right;
+}
+
+.leftAlign {
+	text-align:			left;
+}

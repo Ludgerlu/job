@@ -1,0 +1,171 @@
+
+function initializePrisonDetailsGrid(data){
+	
+	 $('#tblAppendGrid_prisonDetailsList').appendGrid({
+	       // caption: 'List of sentences served for an offence in Canada',
+	        initRows: 1,
+	        hideRowNumColumn: true,
+	        caption: eapp.webforms.locale.residencyCalc.captionPrison,
+	        hideButtons: {
+	            insert: true,
+	            removeLast: true,
+	            moveUp:true,
+	            moveDown:true
+	        },
+	        
+	        columns: [
+					
+	                { 
+	                	name: 'fromDate', 
+	                	display: eapp.webforms.locale.residencyCalc.from, 
+	                	type: 'ui-datepicker', 
+	                	ctrlAttr: { 
+	                		maxlength: 100 
+	                	}, 
+	                	ctrlCss: { 
+	                		width: '100px'
+	                	},
+	                	uiOption: {  },
+	                	onChange: function (evt, rowIndex) {
+	                		    var value = $('#tblAppendGrid_prisonDetailsList').appendGrid('getCtrlValue', 'fromDate', rowIndex);
+	                		    if (value !=null && value !=""){
+	                		    	$('#nextAction').val("calculationTotals");
+	 		         				showNextDiv("calculationTotals");
+	                		    }
+           			   		 
+	                	}
+	                },
+	                { 
+	                	name: 'toDate', 
+	                	display: eapp.webforms.locale.residencyCalc.to, 
+	                	type: 'ui-datepicker', 
+	                	ctrlAttr: { 
+	                		maxlength: 100 
+	                	}, 
+	                	ctrlCss: { width: '100px'} ,uiOption: {  },
+	                	onChange: function (evt, rowIndex) {
+	                		   var value = $('#tblAppendGrid_prisonDetailsList').appendGrid('getCtrlValue', 'toDate', rowIndex);
+	                		    if (value !=null && value !=""){
+	                		    	$('#nextAction').val("calculationTotals");
+	 		         				showNextDiv("calculationTotals");
+	                		    }
+		                     }},
+	                { name: 'activityKind', display: eapp.webforms.locale.residencyCalc.type, type: 'select', ctrlOptions: { 0: 'Type',1: 'Probation', 2: 'Parole', 4: 'Imprisonment', 3:'Other'}},
+	                { name: 'activityType', type: 'hidden', value: 'sentence'},
+	                {name:  'otherDetails', display: eapp.webforms.locale.residencyCalc.otherDetails, type: 'text',  ctrlAttr: { maxlength: 500 }}
+	                  
+	            ]
+	        ,
+	        afterRowRemoved: function (caller, rowIndex) {
+	        	$('#nextAction').val("calculationTotals");
+  				showNextDiv("calculationTotals");
+	        }
+	        ,
+	        i18n: {
+	            append: eapp.webforms.locale.residencyCalc.addEntry
+	           
+	        }
+	    }); 
+	 	swapTdOnHeaders("tblAppendGrid_prisonDetailsList");
+
+}
+
+function initializeAbsenceDetailsGrid(data){
+  	
+  	 $('#tblAppendGrid_absenceDetailsList').appendGrid({
+  	        caption: eapp.webforms.locale.residencyCalc.captionAbs,
+  	        initRows: 1,
+  	        hideRowNumColumn :true,
+  	        hideButtons: {
+  	            insert: true,
+  	            removeLast: true,
+  	            moveUp:true,
+  	            moveDown:true
+  	        },
+  	        columns: [
+  	                { name: 'fromDate', display: eapp.webforms.locale.residencyCalc.from, type: 'ui-datepicker', ctrlAttr: { maxlength: 200 }, ctrlCss: { width: '100px'} ,uiOption: {  },
+  	                	 onChange: function (evt, rowIndex) {
+  	                		 var fromDateValue = $('#tblAppendGrid_absenceDetailsList').appendGrid('getCtrlValue', 'fromDate', rowIndex);
+  	                		 var toDateValue = $('#tblAppendGrid_absenceDetailsList').appendGrid('getCtrlValue', 'toDate', rowIndex);
+  	                		 
+                 		     if (fromDateValue !=null && fromDateValue !="" && toDateValue !=null && toDateValue !=""){
+                 		    	$('#nextAction').val("calculationTotals");
+  		         				showNextDiv("calculationTotals");
+                 		     }
+  	                     }},
+  	                { name: 'toDate', display: eapp.webforms.locale.residencyCalc.to, type: 'ui-datepicker', ctrlAttr: { maxlength: 200 }, ctrlCss: { width: '100px'} ,uiOption: {  },
+  	                	 onChange: function (evt, rowIndex) {
+  	                		 var fromDateValue = $('#tblAppendGrid_absenceDetailsList').appendGrid('getCtrlValue', 'fromDate', rowIndex);
+  	                		 var toDateValue = $('#tblAppendGrid_absenceDetailsList').appendGrid('getCtrlValue', 'toDate', rowIndex);
+  	                		 	
+  	                		    if (fromDateValue !=null && fromDateValue !="" && toDateValue !=null && toDateValue !=""){
+  	                		    	$('#nextAction').val("calculationTotals");
+  	 		         				showNextDiv("calculationTotals");
+  	                		    }
+  		                     }},
+  	                { name: 'activityKind', display: eapp.webforms.locale.residencyCalc.reason, type: 'select', ctrlOptions: {0: eapp.webforms.locale.residencyCalc.reason, 1: 'Business', 2: 'Employed with CDN institution', 3: 'Occupation- transport industry', 4: 'Studies', 5: 'Tourism', 6: 'Visit To Family Member',7: 'Accompanying CDN spouse', 8: 'Other'} },
+  	                { name: 'country', display: 'Country', type: 'select', ctrlOptions: countries},
+  	                {name: 'countryIndex', type: 'hidden'},
+  	                { name: 'activityType', type: 'hidden', value: 'absence'},
+  	                
+  	                { name: 'travelWithFamilyMembers', display: eapp.webforms.locale.residencyCalc.travelWithFamilyMembers, type: 'checkbox',value:false},
+  	                { name: 'otherDetails', display: eapp.webforms.locale.residencyCalc.otherDetails, type: 'text', ctrlAttr: { maxlength: 200 }}
+  	            ]
+  			 ,
+  	         afterRowRemoved: function (caller, rowIndex){
+  				 
+         		 $('#nextAction').val("calculationTotals");
+  	             showNextDiv("calculationTotals");
+  	         },
+  		     afterRowAppended: function (caller, parentRowIndex, addedRowIndex) {
+	        	 $(caller).appendGrid('setCtrlValue', 'countryIndex', addedRowIndex,$( "#country" ).val());
+
+  			 }
+  	    });
+  	 	swapTdOnHeaders("tblAppendGrid_absenceDetailsList");
+  	
+  	
+  }
+
+function getNonPersonalActivityDetails(){
+	
+	var allGrids=[]; 
+	allGrids[0]=$('#tblAppendGrid_prisonDetailsList').appendGrid('getAllValue');
+	allGrids[1]=$('#tblAppendGrid_absenceDetailsList').appendGrid('getAllValue');
+
+	var activityDetailsList = [];
+    var indexDeduction = 0;
+   		
+	$.each(allGrids, function( index, values ) {
+				
+		if (values != null){	
+			$.each(values, function( index1, value ) {
+				var country =  {};
+			 	country[value.countryIndex]= "true";
+	
+				var activityDetails = {
+							fromDate:value.fromDate,
+							toDate: value.toDate,
+							activityType:value.activityType,
+							country:country,
+							activityKind:value.activityKind,
+						    travelWithFamilyMembers:value.travelWithFamilyMembers,
+							otherDetails:value.otherDetails};
+			   	
+					activityDetailsList[indexDeduction]=activityDetails;
+					indexDeduction = indexDeduction + 1;
+			});
+		}
+		
+	});
+	
+	return activityDetailsList;
+}  
+function clearGrid(id){
+	if ($('#' + id).length ==1){
+		var rowCount =  $('#' + id).appendGrid('getRowCount');
+		 	for (var i = 0; i < rowCount; i++) { 
+				$('#' + id).appendGrid('removeRow', i);
+			}
+	}
+}

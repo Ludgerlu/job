@@ -1,0 +1,287 @@
+	var webFormAccessibility = {
+
+		_popovers: [],
+
+		ariaRequired: function(required) {
+
+			if (required) {
+				return 'required="required" aria-required="true"';
+			} else {
+				return 'aria-required="false"';
+			}
+
+		},
+
+		focusOnFirstTabbableElement: function(panelIndex, panelId) {
+
+			var panelContent = undefined;
+
+			// Focus on first tabbable element in an accordion panel
+
+			if ($.isNumeric(panelIndex)) {
+				var accordionHeaderId = "ui-accordion-accordion-header-" + panelIndex;
+				panelContent = $("div[aria-labelledby='" + accordionHeaderId + "']");
+
+			} else if (panelId != null && typeof panelId === "string" && panelId.length > 0) {
+
+				panelContent = $("#" + panelId);
+			}
+
+			if (panelContent !== undefined && panelContent.length > 0) {
+				var firstTabbableEl = panelContent.find(":tabbable").first();
+				if (firstTabbableEl.length === 1) {
+					firstTabbableEl.focus();
+				}
+			}
+
+		},
+
+		addPopover: function(field) {
+			var id = $(field).attr("id"),
+				field = field,
+				mouseover = false,
+				focus = false,
+				dismissed = false;
+
+			var popover = this.getPopover(id);
+			if (popover === null) {
+				this._popovers.push(
+					{
+						id: id,
+						field: field,
+						mouseover: mouseover,
+						focus: focus,
+						dismissed: dismissed
+					}
+				);
+			}
+		},
+
+		getPopover: function(id) {
+
+			var popover = null;
+
+			for (var a = 0, len = this._popovers.length; a < len; a++) {
+				var popover = this._popovers[a];
+				if (popover.id === id) {
+					return popover;
+				}
+			}
+
+			return null;
+		},
+
+		setPopoverFlag: function(id, flag, bool) {
+			var popover = this.getPopover(id);
+
+			for (var a = 0, len = this._popovers.length; a < len; a++) {
+				var popover = this._popovers[a];
+				if (popover.id === id) {
+					this._popovers[a][flag] = bool;
+					return;
+				}
+			}
+		},
+
+		getPopoverFlag: function(id, flag) {
+			var popover = this.getPopover(id);
+			if (popover !== null) {
+				return popover[flag];
+			} else {
+				return null;
+			}
+		},
+
+		getPopovers: function() {
+			return _popovers;
+		},
+
+		attachPopover: function(field, popoverClass, popoverContent) {
+			if (field) {
+				var popoverId = popoverClass + "-" + $(field).attr("id");
+				var popoverContent =
+					'<div id="' + popoverId + '" class="' + popoverClass + '" role="tooltip" aria-hidden="true">' +
+						'<div class="' + popoverClass + '-content">' + popoverContent + '</div>' +
+					'</div>';
+
+				$(field).after(popoverContent);
+				webFormAccessibility.updateDescribedby(field, popoverId, 'add');
+			}
+		},
+
+		showPopover: function(field) {
+			var popoverId = $(field).attr("aria-describedby");
+			$("#" + popoverId).attr("aria-hidden", "false");
+		},
+
+		hidePopover: function(field) {
+			var popoverId = $(field).attr("aria-describedby");
+			$("#" + popoverId).attr("aria-hidden", "true");
+		},
+
+		hideOtherPopovers: function (id, popoverClass) {
+
+			for (var a = 0, len = this._popovers.length; a < len; a++) {
+				var popover = this._popovers[a];
+				if (popover.id !== id) {
+					this._popovers[a]['dismissed'] = true;
+					$('#' +  popoverClass + "-" + popover.id).attr("aria-hidden", "true");
+				}
+			}
+
+		},
+
+		initializePopovers: function(containsPopoverClass) {
+
+			var hasPopoverClass = $.trim(containsPopoverClass || "eapp-question-has-popover"),
+			qaWithPopovers = $("." + hasPopoverClass);
+
+			if (hasPopoverClass.length === 0)
+				return;
+
+			if ($(qaWithPopovers).length > 0) {
+
+				for (var a = 0, len = qaWithPopovers.length; a < len; a++) {
+					var qa = qaWithPopovers[a];
+					webFormAccessibility.bindPopovers(qa);
+				}
+
+			}
+
+		},
+
+		bindPopovers: function(qa) {
+
+			var field,
+			fields,
+			popoverClass = "eapp-popover",
+			qaClass = "eapp-question-and-answer",
+			qdClass = "question-date",
+			ctrlClass = "form-control";
+
+			if (! $(qa).hasClass(qaClass))
+				return;
+
+			var dateGroup = $(qa).find("." + qdClass);
+			if (dateGroup && dateGroup.length === 1) {
+
+				$(qa).addClass("popover-date");
+				fields = $(qa).find("." + qdClass + " ." + ctrlClass);
+
+				if (fields && fields.length > 0) {
+					for (var a = 0, len = fields.length; a < len; a++) {
+						field = fields[a];
+						webFormAccessibility.bindPopoverEvents(qa, popoverClass, field);
+					}
+				}
+
+			} else {
+
+				field = $(qa).find("input." + ctrlClass + ", select." + ctrlClass);
+				if (field && field.length === 1) {
+					webFormAccessibility.bindPopoverEvents(qa, popoverClass, field);
+				}
+			}
+
+		},
+
+		bindPopoverEvents: function(qa, popoverClass, field) {
+
+			webFormAccessibility.addPopover(field);
+			webFormAccessibility.hidePopover(field);
+			var id = $(field).attr("id");
+
+			var popover = webFormAccessibility.getPopover(id);
+
+			$(field).on("mouseover", function(event) {
+				event.preventDefault();
+				event.stopPropagation();
+				webFormAccessibility.setPopoverFlag(id, 'mouseover', true);
+				webFormAccessibility.hideOtherPopovers(id, popoverClass);
+				webFormAccessibility.showPopover(field);
+            });
+
+			$(field).on("focus", function(event) {
+				event.preventDefault();
+				event.stopPropagation();
+				webFormAccessibility.setPopoverFlag(id, 'focus', true);
+				webFormAccessibility.hideOtherPopovers(id, popoverClass);
+				webFormAccessibility.showPopover(field);
+			});
+
+			$(field).on("blur", function(event) {
+				event.preventDefault();
+				event.stopPropagation();
+				webFormAccessibility.setPopoverFlag(id, 'focus', false);
+				webFormAccessibility.setPopoverFlag(id, 'dismissed', false);
+				var mouseover = webFormAccessibility.getPopoverFlag(id, 'mouseover');
+				if (mouseover == false) {
+					webFormAccessibility.hidePopover(field);
+				}
+            });
+
+			$(field).on("mouseout", function(event) {
+				event.preventDefault();
+				event.stopPropagation();
+				webFormAccessibility.setPopoverFlag(id, 'mouseover', false);
+				var dismissed = webFormAccessibility.getPopoverFlag(id, 'dismissed');
+				var focus = webFormAccessibility.getPopoverFlag(id, 'focus');
+				if (dismissed == true || focus == false) {
+					webFormAccessibility.hidePopover(field);
+				}
+            });
+
+			$(field).keydown(function(event) {
+				var KEY_ESC = 27;
+					if (event.which == KEY_ESC) {
+						event.preventDefault();
+						event.stopPropagation();
+						webFormAccessibility.hidePopover(field);
+						webFormAccessibility.setPopoverFlag(id, 'dismissed', true);
+                    }
+			});
+			
+		},
+		
+		ariaLabelledOrDescribedBy: function(labelOrDescription, text, idText) {
+
+			var labelOrDescription = $.trim(labelOrDescription || ''),
+			s = $.trim(text || ''),
+			idText = $.trim(idText || ''),
+			id = [];
+
+			if ((idText.length === 0) || ('label' !== labelOrDescription && 'description' !== labelOrDescription))
+				return '';
+
+			if (text !== null && s.length === 0)
+				return '';
+
+			id.push('question', labelOrDescription, idText);
+			id = id.join('-');
+
+			if ('label' === labelOrDescription) {
+				return 'aria-labelledby="' + id + '"';
+			} else {
+				return 'aria-describedby="' + id + '"';
+			}
+
+		},
+
+		ariaProp: function(prop, text, id) {
+			if ('labelled' === prop) {
+				return webFormAccessibility.ariaLabelledOrDescribedBy('label', text, id);
+			} else if ('described' === prop) {
+				return webFormAccessibility.ariaLabelledOrDescribedBy('description', text, id);
+			} else {
+				return '';
+			}
+
+		},
+
+		quotesToEntities: function(s) {
+			s = s.replace(/\"/g, '&quot;');
+			s = s.replace(/\'/g, '&#039;');
+			return s;
+		}
+
+	};

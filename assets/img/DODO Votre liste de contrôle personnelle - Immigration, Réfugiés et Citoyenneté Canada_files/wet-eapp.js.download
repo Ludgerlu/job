@@ -1,0 +1,322 @@
+/* wet-eapp.js [11.0] - 2016-06-28 */
+
+/* Prefix all custom JavaScript functions with "eapp" (i.e. eappCustomFunction) */
+
+$(document).ready(function() {
+
+	updateClassGeIE10();
+
+	if (typeof eappAddIcons === 'function') {
+		eappAddIcons();
+	}
+	updateErrorAttributesFields("question-label");
+	updateErrorAttributesFields("question-description");
+
+	prCardLoadPage();
+});
+
+function updateErrorAttributesFields(questionDescClass) {
+
+	// Update WAI-ARIA attributes for invalid fields
+	// Questions with question-label and question-description classes
+
+	"use strict";
+
+	var len,
+		field,
+		fields,
+		$fields,
+		questionClass,
+		questionErrorClass,
+		$questionDescs,
+		questionDescriptionId;
+
+	// IE < 8 does not support getAttribute('for')
+	if (ltIE8())
+		return;
+
+	if (questionDescClass !== "question-label" && questionDescClass !== "question-description")
+		return;
+
+	questionErrorClass = questionDescClass + "-error";
+
+	$questionDescs = $("." + questionDescClass + ", ." + questionErrorClass);
+	len = $questionDescs.length;
+
+	if (!len)
+		return;
+
+	for (var i = 0; i < len; i++) {
+
+		questionClass = "";
+		if (($questionDescs[i].className).indexOf(questionErrorClass) !== -1) {
+			questionClass = questionErrorClass;
+		} else if (($questionDescs[i].className).indexOf(questionDescClass) !== -1) {
+			questionClass = questionDescClass;
+		}
+
+		if (questionDescClass === "question-label") {
+			field = $questionDescs[i].getAttribute("for");
+			if (field != null)
+				setAriaInvalid(field, questionClass, questionDescClass, questionErrorClass);
+
+		} else {
+
+			questionDescriptionId = $questionDescs[i].id;
+
+			if (questionDescriptionId == null)
+				continue;
+
+			if (questionDescriptionId.length > 0) {
+				fields = "div[aria-describedby='" + questionDescriptionId + "'] .form-control";
+				fields += ", " + "div[aria-describedby='" + questionDescriptionId + "'] input[type='radio']";
+				$fields = $(fields);
+				if ($fields.length) {
+					var lenFields = $fields.length;
+					for (var j = 0; j < lenFields; j++) {
+						field = $fields[j].id;
+						if (field != null) {
+							setAriaInvalid(field, questionClass, questionDescClass, questionErrorClass);
+						}
+					}
+				}
+			}
+
+		}
+
+	}
+
+}
+
+function setAriaInvalid(field, questionClass, questionDescClass, questionErrorClass) {
+
+	if (field == null)
+		return;
+
+	if (field.length !== 0) {
+		var el = document.getElementById(field);
+		if (el) {
+			if (questionClass === questionErrorClass) {
+				el.setAttribute('aria-invalid', 'true');
+			} else if (questionClass === questionDescClass) {
+				el.setAttribute('aria-invalid', 'false');
+			}
+		}
+	}
+}
+
+function ltIE8() {
+	return (document.getElementsByTagName('html')[0].className.indexOf('lt-ie8') !== -1);
+}
+
+function updateClassGeIE10() {
+	var isGeIE10 = window.navigator.msPointerEnabled;
+	if (isGeIE10)
+		$("html").addClass("ge-ie10");
+}
+
+// Handles the double submit issue by displaying the spinner image
+$(function() {
+	$("#_next").click(function() {
+		$(this).click(function() {
+			$(this).after("<img src='/mycic/resource/images/spinner_squares_circle.gif' alt='loading' />").fadeIn();
+			return false;
+		});
+	});
+});
+
+/* Disable the submit/pay/transmit button after it has been clicked - comment- out since not tested
+	
+$(function() {	
+	$("#_submit").click(function() {			
+		setTimeout(function(me) {
+			me.attr("disabled", "disabled");
+		})($(this), 1);			
+		$(this).after("<img src='/mycic/resource/images/spinner_squares_circle.gif' alt='loading' />").fadeIn();  
+		return true;
+	});
+});	
+	
+
+$(function() {	
+	$("#_payment").click(function() {			
+		setTimeout(function(me) {
+			me.attr("disabled", "disabled");
+		})($(this), 1);			
+		$(this).after("<img src='/mycic/resource/images/spinner_squares_circle.gif' alt='loading' />").fadeIn();  
+		return true;
+
+	});
+});	
+*/
+
+function charEntitiesToUnicode(s) {
+
+	// Replaces HTML character entities with hex codes
+
+	var entities = {
+		'&nbsp;': '\u00a0',
+		'&sect;': '\u00a7',
+		'&copy;': '\u00a9',
+		'&laquo;': '\u00ab',
+		'&reg;': '\u00ae',
+		'&deg;': '\u00b0',
+		'&acute;': '\u00b4',
+		'&raquo;': '\u00bb',
+		'&frac14;': '\u00bc',
+		'&frac12;': '\u00bd',
+		'&Agrave;': '\u00c0',
+		'&Aacute;': '\u00c1',
+		'&Acirc;': '\u00c2',
+		'&Atilde;': '\u00c3',
+		'&Auml;': '\u00c4',
+		'&Aring;': '\u00c5',
+		'&AElig;': '\u00c6',
+		'&Ccedil;': '\u00c7',
+		'&Egrave;': '\u00c8',
+		'&Eacute;': '\u00c9',
+		'&Ecirc;': '\u00ca',
+		'&Euml;': '\u00cb',
+		'&Igrave;': '\u00cc',
+		'&Iacute;': '\u00cd',
+		'&Icirc;': '\u00ce',
+		'&Iuml;': '\u00cf',
+		'&Ntilde;': '\u00d1',
+		'&Ograve;': '\u00d2',
+		'&Oacute;': '\u00d3',
+		'&Ocirc;': '\u00d4',
+		'&Otilde;': '\u00d5',
+		'&Ouml;': '\u00d6',
+		'&times;': '\u00d7',
+		'&Oslash;': '\u00d8',
+		'&Ugrave;': '\u00d9',
+		'&Uacute;': '\u00da',
+		'&Ucirc;': '\u00db',
+		'&Uuml;': '\u00dc',
+		'&Yacute;': '\u00dd',
+		'&agrave;': '\u00e0',
+		'&aacute;': '\u00e1',
+		'&acirc;': '\u00e2',
+		'&atilde;': '\u00e3',
+		'&auml;': '\u00e4',
+		'&aring;': '\u00e5',
+		'&aelig;': '\u00e6',
+		'&ccedil;': '\u00e7',
+		'&egrave;': '\u00e8',
+		'&eacute;': '\u00e9',
+		'&ecirc;': '\u00ea',
+		'&euml;': '\u00eb',
+		'&igrave;': '\u00ec',
+		'&iacute;': '\u00ed',
+		'&icirc;': '\u00ee',
+		'&iuml;': '\u00ef',
+		'&ntilde;': '\u00f1',
+		'&ograve;': '\u00f2',
+		'&oacute;': '\u00f3',
+		'&ocirc;': '\u00f4',
+		'&otilde;': '\u00f5',
+		'&ouml;': '\u00f6',
+		'&divide;': '\u00f7',
+		'&oslash;': '\u00f8',
+		'&ugrave;': '\u00f9',
+		'&uacute;': '\u00fa',
+		'&ucirc;': '\u00fb',
+		'&uuml;': '\u00fc',
+		'&yacute;': '\u00fd',
+		'&yuml;': '\u00ff',
+		'&amp;': '\u0026',
+		'&lt;': '\u003c',
+		'&gt;': '\u003e',
+		'&ndash;': '\u2013',
+		'&mdash;': '\u2014',
+		'&lsquo;': '\u2018',
+		'&rsquo;': '\u2019',
+		'&ldquo;': '\u201c',
+		'&rdquo;': '\u201d',
+		'&bull;': '\u2022',
+		'&trade;': '\u2122'
+	};
+
+	var c,
+		filteredText = s;
+
+	for (c in entities) {
+		if (entities.hasOwnProperty(c)) {
+			filteredText = filteredText.replace(new RegExp(c, "g"), entities[c]);
+		}
+	}
+
+	return filteredText;
+}
+
+function ajaxLoader(el, options) {
+	// Becomes this.options
+	var defaults = {
+		bgColor: '#fff',
+		duration: 800,
+		opacity: 0.7,
+		classOveride: false
+	};
+	this.options = jQuery.extend(defaults, options);
+	this.container = $(el);
+
+	this.init = function() {
+		var container = this.container;
+		// Delete any other loaders
+		this.remove();
+		// Create the overlay 
+		var overlay = $('<div></div>').css({
+			'background-color': this.options.bgColor,
+			'opacity': this.options.opacity,
+			'width': container.width(),
+			'height': container.height(),
+			'position': 'absolute',
+			'top': '0px',
+			'left': '0px',
+			'z-index': 99999
+		}).addClass('ajax_overlay');
+		// add an overiding class name to set new loader style 
+		if (this.options.classOveride) {
+			overlay.addClass(this.options.classOveride);
+		}
+		// insert overlay and loader into DOM 
+		container.append(
+			overlay.append(
+				$('<div></div>').addClass('ajax_loader')
+			).fadeIn(this.options.duration)
+		);
+	};
+
+	this.remove = function() {
+		var overlay = this.container.children(".ajax_overlay");
+		if (overlay.length) {
+			overlay.fadeOut(this.options.classOveride, function() {
+				overlay.remove();
+			});
+		}
+	};
+
+	this.init();
+}
+
+function prCardLoadPage() {
+	if ("prCardActive" in window) {
+		window.frames['prCardFrm'].location.replace(prCardLoadUrl);
+/*		var progressBox;
+		progressBox = new ajaxLoader($("#prCardDiv"));
+
+		$('#prCardDiv').load(prCardLoadUrl, function(response, status, xhr) {
+			if (status == "error") {
+				$("#prCardDiv").html("Error loading PRCard view: " + xhr.status + " " + xhr.statusText);
+			}
+			if (progressBox) progressBox.remove();
+		});
+*/	}
+}
+
+if ((window.location.pathname).includes("/c2c/")) {
+	$("[href*='/eapp/']").each(function() {
+		$(this).attr('href', $(this).attr("href").replace("/eapp/", "/c2c/"));
+	});
+}
+

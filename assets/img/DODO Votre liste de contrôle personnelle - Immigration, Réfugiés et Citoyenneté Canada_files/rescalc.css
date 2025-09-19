@@ -1,0 +1,264 @@
+div.anotherHeader {
+	padding: 5px 10px;
+	background-image: linear-gradient(rgb(23, 108, 167), rgb(19, 88, 136)) !important;
+}
+button.insert .ui-icon
+{
+   background-color :rgb(215, 235, 249);
+}
+
+button.remove .ui-icon
+{
+   background-color :rgb(215, 235, 249);
+}
+button.moveUp .ui-icon
+{
+   background-color :rgb(215, 235, 249);
+}
+button.moveDown .ui-icon
+{
+   background-color :rgb(215, 235, 249);
+}
+
+button.append .ui-icon
+{
+   background-color :rgb(215, 235, 249);
+}
+
+button.removeLast .ui-icon
+{
+   background-color :rgb(215, 235, 249);
+}
+
+h1.leftalign
+{
+	text-align		  : left;
+}
+
+div.divRowArea
+{
+	margin: 0; 
+	padding: 0; 
+	width: 100%;
+	/*clear:both;*/
+}
+
+div.col50Area
+{
+	float: left; 
+	margin: 5px 3px 5px 0;
+	padding: 0;
+}
+
+div.col45Area
+{
+	float: left;
+	width: 44%;
+	margin: 5px 3px 5px 0;
+	padding: 0;
+}
+
+div.col5Area
+{
+	float: left;
+	width: 4%;
+	margin: 5px 3px 5px 0;
+	padding: 0;
+}
+
+div.col50ActualArea
+{
+	float: left; 
+	width: 49%;
+	margin: 5px 3px 5px 0;
+	padding: 0;
+}
+
+div.col60Area
+{
+	float: left; 
+	width: 59%;
+	margin: 5px 3px 5px 0;
+	padding: 0;
+}
+
+div.col40Area
+{
+	float: left;
+	width: 39%;
+	margin: 5px 3px 5px 0;
+	padding: 0;
+}
+
+div.clearLeft
+{
+	clear:left;
+}
+
+p.noPadMar
+{
+	padding:0;
+	margin:0;
+	clear:both;
+}
+
+div.paddingTop
+{
+	padding-top: 5px;
+}
+
+div.divMainArea
+{
+	overflow:hidden;
+	width:98%;
+}
+
+div.formHeaderDiv
+{
+	background-color  : #224488;
+	border-top        : 1px solid #000099;
+	border-left       : 1px solid #000099;
+	border-right      : 1px solid #000099;
+	font-weight       : bold;
+	padding           : 3px;
+	color			  : #FFF;
+	text-align		  : center;
+}
+
+div.residencyCalcDiv
+{
+
+	/*clear:
+	background-color  : #E9F2F6;
+	both;*/
+	background-color  : #E9F2F6;
+	background-position: -3600px 0;
+    outline: 1px solid #2A7DA6;
+
+	padding           : 10px;
+}
+
+div.addEntryFormHeaderDiv
+{
+	background-color  : #224488;
+	border-bottom     : 1px solid #000099;
+	border-top        : 1px solid #000099;
+	border-left       : 1px solid #000099;
+	border-right      : 1px solid #000099;
+	border-spacing    : 1pt;
+	padding           : 3px;
+	font-weight       : bold;
+	color             : #FFF;
+	
+	/*The below 2 lines is a "hack" to get the background to expand properly with floating div's*/
+	overflow: hidden;
+	width: 98.5%;
+}
+
+div.addEntryFormDiv
+{
+	background-color  : #eff5fb;
+	border-top        : 1px solid #000099;
+	border-right      : 1px solid #000099;
+	border-left       : 1px solid #000099;
+	border-bottom     : 1px solid #000099;
+	border-spacing    : 1pt;
+	padding           : 3px;
+	
+	/*The below 2 lines is a "hack" to get the background to expand properly with floating div's*/
+	overflow: hidden;
+	width: 98.5%;
+}
+
+.listFormTable
+{
+	background-color  	: #ccddee;
+	border-top        	: 1px solid #000099;
+	border-right      	: 1px solid #000099;
+	border-left       	: 1px solid #000099;
+	border-bottom     	: 1px solid #000099;
+	border-collapse   	: collapse;
+	padding           	: 3px;
+	width				: 100%;
+}
+
+div.divLimitTable580
+{
+	width		: 580px;
+	overflow	: auto;
+	padding		: 1px;
+}
+
+div.divLimitTable635
+{
+	width		: 635px;
+	/*overflow	: auto;*/
+	position	: relative;
+	padding		: 1px;
+}
+
+div.divLimitTable780
+{
+	width		: 778px;
+	overflow	: auto;
+	padding		: 1px;
+}
+
+div.printBtnOut
+{
+	border:2px solid #660066;
+	width: 175px;
+	padding: 2px;
+}
+
+div.printBtnIn
+{
+	border:1px solid #660066;
+	background: #FFFFCC;
+	width: 165px;
+	padding: 5px;
+	text-align: center;
+}
+
+div.centerBtn
+{
+	margin-left: auto;
+	margin-right: auto;
+	width: 175px;
+}
+
+div.paddingLeft50
+{
+	padding-left: 50px;
+}
+
+th.thWidth10
+{
+	width: 10%;
+}
+
+th.thWidth20
+{
+	width: 20%;
+}
+
+th.thWidth25
+{
+	width: 25%;
+}
+
+th.thWidth45
+{
+	width: 45%;
+}
+
+table.formBodyTable
+{
+	background-color	: #eff5fb;
+	border-top			: 1px solid #000099;
+	border-bottom		: 1px solid #000099;
+	border-left			: 1px solid #000099;
+	border-right		: 1px solid #000099;
+	padding				: 3px;
+}
+

@@ -1,0 +1,42 @@
+	function formatRequest(divID)
+	{
+		var payload = document.getElementById(divID).innerHTML;
+		return payload;
+	}	
+	
+	function setHiddenContent()
+	{
+		var innerHtml = document.getElementById( "questionAnswersTable" ).innerHTML;
+		
+		//document.PERSONAL_INFO_FORM_SIGNED.payload.value = innerHtml;
+		document.PERSONAL_INFO_FORM.payload.value = innerHtml;
+		
+	}
+	
+	function signSubmit( ) 
+	{
+		setHiddenContent();
+		
+		// submit the 'hidden' form
+		document.PERSONAL_INFO_FORM.submit();
+		
+		// prevent original form submission
+		return false;
+	}
+	
+	function signSubmitToCallCentre() 
+	{
+		// set hidden digital signature value
+		setHiddenContent();
+
+		// 	set hidden comments
+		var commentsValue = document.getElementById( "clientCommentsToCallCentre" ).value;
+		document.PERSONAL_INFO_FORM.clientComments.value = commentsValue;
+	
+		// submit the 'hidden' form
+		document.PERSONAL_INFO_FORM.submit();
+		
+		// prevent original form submission
+		return false;
+	}
+	

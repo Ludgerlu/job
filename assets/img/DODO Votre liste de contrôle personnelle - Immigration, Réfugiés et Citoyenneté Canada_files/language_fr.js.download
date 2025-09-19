@@ -1,0 +1,19 @@
+function changeLang(myUrl)
+{
+  if (document.forms.length >= 1)
+  {
+    if (document.forms[0].lang != null)
+    {
+      document.forms[0].lang.value = 'en';
+      document.forms[0].submit();
+    }
+    else
+    {
+      document.location=myUrl+"?lang=en";
+    }
+  }
+  else
+  {
+    document.location=myUrl+"?lang=en";
+  }
+}

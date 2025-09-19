@@ -1,0 +1,466 @@
+function displayDocumentHelp( documentTypeCode, helpTextKeyArray, language )
+{
+	if( language == null )
+	{
+		language = "en";
+	}
+	
+	var idPostFix = "English";
+	if( language == "fr" )
+	{
+		idPostFix = "French";
+	}
+	
+	var documentElementId = "trHelpDisplay" + idPostFix + documentTypeCode;
+	
+	var showHelp = false;
+	
+	// are we opening or closing this help item
+	if( document.getElementById( documentElementId ).style.display == "" )
+	{
+		showHelp = false;
+	}
+	else
+	{
+		showHelp = true;
+	}
+
+	// close any help blocks currently open
+	closeAllDocuments( helpTextKeyArray );
+	
+	// if we are opening, then show the chosen one.
+	if( showHelp == true )
+	{
+		document.getElementById(documentElementId).style.display = "";
+
+		incrementHelpCount();
+		
+		window.location = "#start_help";
+	}	
+}
+
+function closeAllDocuments( helpTextKeyArray )
+{
+	if ( helpTextKeyArray.length > 0 )
+	{
+		// loop through the possible list of help blocks and close them all (French and English!)
+		var arrayLength = helpTextKeyArray.length;
+		for ( var i =0; i < arrayLength; i++ )
+		{	
+			if(document.getElementById("trHelpDisplayEnglish" + helpTextKeyArray[i]) != null)
+				document.getElementById("trHelpDisplayEnglish" + helpTextKeyArray[i]).style.display = "none";
+			
+			if(document.getElementById("trHelpDisplayFrench" + helpTextKeyArray[i]))
+				document.getElementById("trHelpDisplayFrench" + helpTextKeyArray[i]).style.display = "none";
+		}
+	}	
+}
+
+function incrementHelpCount()
+{
+	// Behaviour change - we only want to record that they hit it once, so the count is never set to > 1
+
+	// increment the help count
+	var helpCount = document.getElementById("helpCount");
+	if( helpCount != null ) 
+	{
+		var helpCountValue 	 = parseInt( helpCount.value);
+		//var newHelpCount 	 = helpCountValue+1;
+		newHelpCount=1;
+		
+		helpCount.value = newHelpCount;
+	}
+}
+ /* JP deprecated 2009/03/19 */
+ /*
+function incrementGlossaryCount()
+{
+ 
+	alert('should not be here');
+	// increment the help count
+	var glossaryCount = document.getElementById("glossaryCount");
+    if( glossaryCount != null ) 
+    {
+		var glossaryCountValue 	 = parseInt( glossaryCount.value);
+		var newGlossaryCount 	 = glossaryCountValue+1;
+	
+		glossaryCount.value = newGlossaryCount;
+          
+    }
+}
+*/
+
+function incrementGlossaryItemCount( glossaryItem )
+{
+	// Behaviour change - we only want to record that they hit it once, so the count is never set to > 1
+	var glossaryCountId = "glossaryCounter" + glossaryItem;
+
+	// increment the glossary count
+	var glossaryCount = document.getElementById( glossaryCountId );
+    if( glossaryCount != null ) 
+    {
+		var glossaryCountValue 	 = parseInt( glossaryCount.value);
+		//var newGlossaryCount 	 = glossaryCountValue+1;
+		var newGlossaryCount 	 = 1;
+	
+		glossaryCount.value = newGlossaryCount;
+    }
+}
+
+function closeAllGlossaryItems(  )
+{
+	var glossaryIDList = document.getElementById("glossaryIDList").value;
+	
+	if ( glossaryIDList != null && glossaryIDList != "" )
+	{
+		var glossaryArray = glossaryIDList.split(",");
+	
+		if ( glossaryArray != null )
+		{
+
+			// loop through the possible list of help blocks and close them all
+			var arrayLength = glossaryArray.length;
+			for ( var i =0; i < arrayLength; i++ )
+			{	
+				document.getElementById("trGlossaryDisplay" + glossaryArray[i]).style.display = "none";
+			}
+		}
+	}	
+}
+
+function displayHelpOnly()
+{
+//	alert("displayHelpOnly-start");
+
+//	var helpLang = document.getElementById("helpLang").value;
+
+//	alert("displayHelpOnly, helpLang=" + helpLang );
+
+//	if( helpLang == "fr" )
+//	{
+//		toggleHelp( "trHelpDisplayFrench" );
+//	}
+//	else
+//	{
+//		toggleHelp( "trHelpDisplayEnglish" );
+//	}
+
+	if( document.getElementById("trHelpDisplay2").style.display == "" )
+	{
+		document.getElementById("trHelpDisplay2").style.display = "none";
+	}
+	else
+	{
+		document.getElementById("trHelpDisplay2").style.display = "";
+		
+		incrementHelpCount();
+		
+		window.location = "#start_help";
+	}
+}
+
+function closeAllHelp( )
+{
+	document.getElementById("trHelpDisplayFrench" ).style.display = "none";
+	document.getElementById("trHelpDisplayEnglish" ).style.display = "none";
+	
+	if(document.getElementById("helpImage") != null)
+		document.getElementById("helpImage").style.display = "";
+	
+	if(document.getElementById("helpImageRed") != null)
+		document.getElementById("helpImageRed").style.display = "none";		
+}
+
+function closeAllHelp2(divId, lang)
+{
+	document.getElementById(divId + lang).style.display = "none";
+	document.getElementById(divId +"B").style.display = "";
+	document.getElementById(divId +"R").style.display = "none";
+}
+
+function displayHelp( )
+{
+	closeAllGlossaryItems( );
+	
+	var helpLang = document.getElementById("helpLang").value;
+
+	if( helpLang == "fr" )
+	{
+		toggleHelp( "trHelpDisplayFrench" );
+	}
+	else
+	{
+		toggleHelp( "trHelpDisplayEnglish" );
+	}
+}
+
+function displayHelp2(divId)
+{
+	closeAllGlossaryItems( );
+	
+	var helpLang = document.getElementById("helpLang").value;
+
+	if( helpLang == "fr" )
+	{
+		toggleHelp2(divId,'-f');
+	}
+	else
+	{
+		toggleHelp2(divId, '-e');
+	}
+}
+
+function toggleHelp( languageHelpElementId )
+{
+	if( document.getElementById(languageHelpElementId).style.display == "" )
+	{
+		document.getElementById(languageHelpElementId).style.display = "none";
+		document.getElementById("helpImage").style.display = "";
+		document.getElementById("helpImageRed").style.display = "none";		
+	}
+	else
+	{
+		document.getElementById(languageHelpElementId).style.display = "";
+		document.getElementById("helpImage").style.display = "none";
+		document.getElementById("helpImageRed").style.display = "";			
+		incrementHelpCount();
+		
+		window.location = "#start_help";
+	}
+}
+
+function toggleHelp2( languageHelpElementId, lang )
+{
+	if( document.getElementById(languageHelpElementId + lang).style.display == "" )
+	{
+		document.getElementById(languageHelpElementId + lang).style.display = "none";
+		document.getElementById(languageHelpElementId+"B").style.display = "";
+		document.getElementById(languageHelpElementId+"R").style.display = "none";				
+	}
+	else
+	{		
+		document.getElementById(languageHelpElementId + lang).style.display = "";
+		document.getElementById(languageHelpElementId+"B").style.display = "none";
+		document.getElementById(languageHelpElementId+"R").style.display = "";				
+		incrementHelpCount();
+	}
+}
+
+function changeHelpLanguage( )
+{
+ 	var helpLang = document.getElementById("helpLang").value;
+ 
+ 	if( helpLang == "fr" )
+ 	{
+ 		document.getElementById("helpLang").value = "en";
+ 	}
+ 	else
+ 	{
+ 		document.getElementById("helpLang").value = "fr";
+ 	}
+ 	
+ 	closeAllHelp( );
+ 	displayHelp( );
+}
+
+function changeHelpLanguage2(divId)
+{
+ 	var helpLang = document.getElementById("helpLang").value;
+ 
+ 	if( helpLang == "fr" )
+ 	{
+ 		document.getElementById("helpLang").value = "en";
+ 	 	closeAllHelp2(divId, '-f');
+ 	}
+ 	else
+ 	{
+ 		document.getElementById("helpLang").value = "fr";
+ 	 	closeAllHelp2(divId, '-e');
+ 	} 	
+
+ 	displayHelp2(divId);
+}
+
+
+
+
+  function displayGlossary_deprecated( glossaryId )
+{
+	closeAllHelp( );
+	var glossaryDocumentId = "trGlossaryDisplay" + glossaryId;
+	
+	var showHelp   = false;
+	
+	// are we opening or closing this glossary item
+	if( document.getElementById( glossaryDocumentId ).style.display == "" )
+	{
+		showHelp = false;
+	}
+	else
+	{
+		showHelp = true;
+	}
+	// close any glossary blocks currently open
+	closeAllGlossaryItems( );
+	
+	// if we are opening, then show the chosen one.
+	if( showHelp == true )
+	{
+		document.getElementById(glossaryDocumentId).style.display = "";
+		//incrementGlossaryCount();
+		incrementGlossaryItemCount( glossaryId );
+		//window.location = "#start_glossary";
+		window.location = "#"+glossaryDocumentId;
+	}	
+}
+
+function displayGlossary_deprecated_too( glossaryId, title, desc)
+{
+	var glossaryId = 'GlossaryAnswer' + glossaryId;
+
+	toggleGlossaryHelpTip('glossaryhelptip', title, desc);
+}
+ 
+function displayGlossary2( glossaryId)
+{
+	closeAllHelp( );
+	
+	var glossaryDocumentId = "trGlossaryDisplay" + glossaryId;
+	var showHelp   = false;
+	
+	// are we opening or closing this glossary item
+	if( document.getElementById( glossaryDocumentId ).style.display == "" )
+	{
+		showHelp = false;
+	}
+	else
+	{
+		showHelp = true;
+	}
+
+	// close any glossary blocks currently open
+	closeAllGlossaryItems( );
+	
+	// if we are opening, then show the chosen one.
+	if( showHelp == true )
+	{
+		document.getElementById(glossaryDocumentId).style.display = "";
+		
+		 /* JP deprecated 2009/03/19 */
+		//incrementGlossaryCount();
+		incrementGlossaryItemCount( glossaryId );
+		
+		//window.location = "#start_glossary";
+	}
+	
+
+}
+
+function newStaticWindow(lang)
+{ 
+  if(document.getElementById("identifierTypeHelp") != null)
+  {
+	  switch(document.forms[0].identifierType.selectedIndex)
+	  {
+	    case 1:
+	      document.getElementById("identifierTypeHelp").href="../gol_static/shared/help/client_no_" + lang + ".shtml";
+	      break;
+	    case 2:
+	      document.getElementById("identifierTypeHelp").href="../gol_static/shared/help/file_no_" + lang + ".shtml";
+	      break;
+	    case 3:
+	      document.getElementById("identifierTypeHelp").href="../gol_static/shared/help/filecrs_no_" + lang + ".shtml";
+	      break; 
+	    case 4:
+	      document.getElementById("identifierTypeHelp").href="../gol_static/shared/help/prc_no_" + lang + ".shtml";
+	      break;
+	    case 5:
+	      document.getElementById("identifierTypeHelp").href="../gol_static/shared/help/receipt_no_" + lang + ".shtml";
+	      break;
+	    case 6:
+	      document.getElementById("identifierTypeHelp").href="../gol_static/shared/help/rec5401_no_" + lang + ".shtml";
+	      break;
+	    case 7:
+	      document.getElementById("identifierTypeHelp").href="../gol_static/shared/help/recland_no_" + lang + ".shtml";
+	      break;  
+	    case 8:
+	      document.getElementById("identifierTypeHelp").href="../gol_static/shared/help/recland_no_" + lang + ".shtml";
+	      break;
+	    default:
+	      document.getElementById("identifierTypeHelp").href="../gol_static/shared/help/identifier_type_" + lang + ".shtml";
+	      break;
+	  }
+  }
+  
+  var windowProperties = 'toolbar=no,'
+                        +'status,'
+                        +'resizable,'
+                        +'scrollbars,'
+                        +'width=500,'
+                        +'height=550,'
+                        +'top=0,'
+                        +'left=0';
+                          
+  winContent = window.open("", 'myWin', windowProperties);
+    
+  winContent.focus();
+}
+
+function destroyHelpTip(htmlNode) {
+	document.getElementById(htmlNode).style.display = 'none';
+}
+
+function showHelpTip(htmlNode, title, desc, buttonAlt) {
+	document.getElementById(htmlNode).style.position = 'absolute';
+	document.getElementById(htmlNode).style.display = 'block';
+	document.getElementById(htmlNode).style.border = 'outset 1px #003381';
+	document.getElementById(htmlNode).style.color = 'white';
+	document.getElementById(htmlNode).style.backgroundColor = '#3777C4';
+	document.getElementById(htmlNode).innerHTML = 	'<strong><p>' + title + '</p><span class="float-right""><a href="javascript:hideHelpTip(\''+htmlNode+'\')"><img class="eapp-close-button image-actual" src="/eapp/resource/images/close-button.gif" width="15" height="15" alt="' + 'Close' + '"></a></span>' + '</strong>' + desc;
+}
+
+
+function hideHelpTip(htmlNode) {
+	if(htmlNode instanceof HTMLCollection) {
+		for(var idx = 0; idx < htmlNode.length; idx++) {
+			htmlNode[idx].style.display = 'none';
+		}
+	} else {
+		document.getElementById(htmlNode).style.display = 'none';
+	}
+}
+
+function toggleHelpTip(htmlNode, title, desc, buttonAlt) {
+	if(document.getElementById(htmlNode).style.display == 'block') {
+		destroyHelpTip(htmlNode);
+	} else {
+		showHelpTip(htmlNode, title, desc, buttonAlt);
+	}
+}
+
+function toggleGlossaryHelpTip(htmlNode, title, desc) {
+	if(document.getElementById(htmlNode).style.display == 'block') {
+		destroyHelpTip(htmlNode);
+		
+	} else {
+		showGlossaryHelpTip(htmlNode, title, desc);
+	}
+}
+
+function showGlossaryHelpTip(htmlNode, title, desc) {
+	document.getElementById(htmlNode).style.position = 'absolute';
+	document.getElementById(htmlNode).style.display = 'block';
+	document.getElementById(htmlNode).style.border = 'outset 1px #003381';
+	document.getElementById(htmlNode).style.color = 'white';
+	document.getElementById(htmlNode).style.backgroundColor = '#3777C4';
+	desc = replaceAll(desc, "+++++++", "\'");
+	document.getElementById(htmlNode).innerHTML = 	'<strong><p>' + title + '</p><span class="float-right""><a href="javascript:hideHelpTip(\''+htmlNode+'\')"><img class="eapp-close-button image-actual" src="/eapp/resource/images/close-button.gif" width="15" height="15" alt="' + 'Close' + '"></a></span>' + '</strong>' + desc;
+}
+
+function replaceAll(string, token, newtoken) {
+    if(token!=newtoken)
+    while(string.indexOf(token) > -1) {
+        string = string.replace(token, newtoken);
+    }
+    return string;
+}
